@@ -4,32 +4,60 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [name, setName] = useState(true)
+  const [theme, setTheme] = useState(true)
+  const [num, setNum] = useState(0)
+  const [titulo, setTitulo] = useState (false)
+  const [texto, setTexto] = useState(' ')
+  const exibirMsg = (event) => {
+    setTexto(event.target.value);
+  };
+  
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+        <button onClick={() => setTheme(theme ? false : true)}>TROCAR A COR DE FUNDO</button>
+        {theme ?
+        <div className='fundo-preto'>
+          <h1>NOME: {name}</h1>
+          <input type="text" onChange={(e) => setName(e.target.value)} />
+          </div>
+        :  <div className='fundo-branco'>
+            <h1>NOME: {name}</h1>
+            <input type="text" onChange={(e) => setName(e.target.value)} />
+          </div> 
+          }
+
+          
+          <div>
+          <button onClick={() => setNum (num +10)}>ADICIONAR NÚMERO</button>
+          <h1>{num}</h1>
+          <button onClick={() => setNum (num -10)}>REMOVER NÚMERO</button>
+          </div>
+          <br />
+
+          
+          <div>
+            <button onClick={() => setTitulo(("Balacobaco"))}>
+            Exibir título {titulo}
+            </button>
+          
+            <button onClick={() => setTitulo((titulo) => titulo = "")}>
+            Ocultar título {titulo}
+            </button>
+          
+          </div>
+
+          <div>
+             <input type="text" value={texto} placeholder='Digite algo' onChange={exibirMsg} />
+            <p>Resultado: {texto}</p>
+            {texto === "SENAI" && <p>Apareci!</p>}
+          </div>
+
+
+          </>
+
+        )
 }
 
 export default App

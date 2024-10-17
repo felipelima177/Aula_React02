@@ -1,8 +1,9 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import HelloWorld from './HelloWorld.jsx'
-import './index.css'
+import App from './App.jsx'
+
+
 
 createRoot(document.getElementById('root')).render(
-    <HelloWorld/>,
+    <App/>
 )
