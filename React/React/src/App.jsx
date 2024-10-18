@@ -17,9 +17,14 @@ function App() {
   const [ano, setAno] = useState(24);
   const [email, setEmail] = useState('felipe123@gmail.com');
   const [like, setLike] = useState()
-  const [textcont, setTextcont] = useState()
-
+  const [textocaracter, setTextocaracter] = useState('');
+  const contCaracter = (event) => {
+    setTextocaracter(event.target.value);
+  };
+  
   return (
+  
+
     <>
       <button onClick={() => setTheme(theme ? false : true)}>TROCAR A COR DE FUNDO</button>
       {theme ?
@@ -74,7 +79,20 @@ function App() {
       <br />
 
        {/*Atv 5 contador de caracteres */}
-      
+       <div style={{ padding: '20px' }}>
+      <h1>Contador de Caracteres</h1>
+      <textarea
+        rows="4"
+        cols="50"
+        placeholder="Digite um texto:"
+        value={textocaracter}
+        onChange={contCaracter}
+        style={{ resize: 'none' }}
+      />
+      <div style={{ marginTop: '10px' }}>
+        <strong>Quantidade de caracteres: {textocaracter.length}</strong>
+      </div>
+    </div>
 
 
 
